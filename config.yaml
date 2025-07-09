@@ -1,0 +1,343 @@
+# Cybersecurity Control Matcher Configuration
+# Target: ~100% Recall for pre-LLM stage
+
+concept_patterns:
+  mfa:
+    patterns:
+      - '\bmfa\b'
+      - 'multi[\s-]?factor'
+      - 'two[\s-]?factor'
+      - '2fa\b'
+      - 'authentication.*factor'
+      - 'factor.*authentication'
+      - 'second[\s-]?factor'
+      - 'dual[\s-]?factor'
+      - 'multi[\s-]?step.*authentication'
+      - 'additional.*authentication'
+    synonyms:
+      - 'authentication factor'
+      - 'second factor'
+      - 'dual factor'
+      - 'otp'
+      - 'one time password'
+      - 'token'
+      - 'authenticator'
+      - 'pin'
+      - 'biometric'
+      - 'smart card'
+      - 'hardware token'
+      - 'software token'
+    weight: 1.2
+
+  encryption:
+    patterns:
+      - 'encrypt'
+      - '\btls\b'
+      - '\bssl\b'
+      - 'cryptograph'
+      - 'data.*transit'
+      - 'transit.*encrypt'
+      - 'data.*rest'
+      - 'rest.*encrypt'
+      - 'openssh'
+      - '\baes\b'
+      - 'cipher'
+      - 'key[\s-]?management'
+      - 'key[\s-]?rotation'
+      - '\bhsm\b'
+      - 'hardware.*security.*module'
+      - 'database.*encrypt'
+      - 'field[\s-]?level.*encrypt'
+      - 'application[\s-]?layer.*encrypt'
+      - 'storage[\s-]?layer.*encrypt'
+    synonyms:
+      - 'cipher'
+      - 'encode'
+      - 'secure transmission'
+      - 'data protection'
+      - 'cryptographic'
+      - 'encrypted channel'
+      - 'secure channel'
+      - 'encryption key'
+      - 'certificate'
+      - 'pki'
+    weight: 1.2
+
+  backup:
+    patterns:
+      - 'backup'
+      - 'recover'
+      - 'restor'
+      - 'disaster.*recovery'
+      - 'data.*recovery'
+      - 'recovery.*data'
+      - 'replicat'
+      - 'snapshot'
+      - 'archive'
+      - 'failover'
+      - 'redundan'
+      - 'business.*continuity'
+      - 'recovery.*point'
+      - 'recovery.*time'
+      - '\brpo\b'
+      - '\brto\b'
+    synonyms:
+      - 'archive'
+      - 'snapshot'
+      - 'replicate'
+      - 'failover'
+      - 'mirror'
+      - 'copy'
+      - 'redundancy'
+      - 'continuity'
+      - 'resilience'
+    weight: 1.1
+
+  firewall:
+    patterns:
+      - 'firewall'
+      - 'filter.*traffic'
+      - 'traffic.*filter'
+      - 'network.*filter'
+      - 'port.*filter'
+      - 'packet.*filter'
+      - 'stateful.*inspection'
+      - 'deep.*packet'
+      - 'application.*firewall'
+      - '\bwaf\b'
+      - 'web.*application.*firewall'
+      - 'network.*rule'
+      - 'traffic.*rule'
+      - 'ingress.*rule'
+      - 'egress.*rule'
+    synonyms:
+      - 'packet filter'
+      - 'network security'
+      - 'port blocking'
+      - 'traffic control'
+      - 'network protection'
+      - 'perimeter defense'
+    weight: 1.0
+
+  access_control:
+    patterns:
+      - 'access.*control'
+      - 'access.*grant'
+      - 'grant.*access'
+      - 'access.*revok'
+      - 'revok.*access'
+      - 'permission'
+      - 'privilege'
+      - 'entitlement'
+      - 'authorization'
+      - 'access.*provision'
+      - 'provision.*access'
+      - 'role[\s-]?based'
+      - '\brbac\b'
+      - 'least.*privilege'
+      - 'need[\s-]?to[\s-]?know'
+      - 'segregation.*duties'
+      - '\bsod\b'
+    synonyms:
+      - 'authorization'
+      - 'entitlement'
+      - 'rights management'
+      - 'access rights'
+      - 'user rights'
+      - 'permissions'
+      - 'access management'
+    weight: 1.1
+
+  monitoring:
+    patterns:
+      - 'monitor'
+      - '\blog\b'
+      - 'logging'
+      - '\bsiem\b'
+      - 'detect'
+      - 'alert'
+      - 'track'
+      - 'audit.*log'
+      - 'event.*log'
+      - 'security.*monitor'
+      - 'real[\s-]?time.*monitor'
+      - 'continuous.*monitor'
+      - 'log.*aggregat'
+      - 'log.*correlat'
+      - 'anomaly.*detect'
+      - 'threat.*detect'
+    synonyms:
+      - 'observe'
+      - 'watch'
+      - 'supervise'
+      - 'surveillance'
+      - 'tracking'
+      - 'auditing'
+      - 'logging'
+    weight: 1.0
+
+  vulnerability:
+    patterns:
+      - 'vulnerabil'
+      - 'patch'
+      - 'remediat'
+      - 'fix.*security'
+      - 'security.*update'
+      - 'security.*fix'
+      - 'vulnerability.*scan'
+      - 'security.*scan'
+      - 'patch.*management'
+      - 'vulnerability.*assessment'
+      - 'security.*assessment'
+      - 'cve'
+      - 'zero[\s-]?day'
+      - 'exploit'
+    synonyms:
+      - 'weakness'
+      - 'flaw'
+      - 'security hole'
+      - 'security gap'
+      - 'exposure'
+      - 'risk'
+    weight: 1.0
+
+  training:
+    patterns:
+      - 'train'
+      - 'educat'
+      - 'awareness'
+      - 'course'
+      - 'program.*security'
+      - 'security.*program'
+      - 'security.*awareness'
+      - 'awareness.*training'
+      - 'phishing.*training'
+      - 'security.*education'
+      - 'user.*training'
+      - 'employee.*training'
+    synonyms:
+      - 'education'
+      - 'learning'
+      - 'instruction'
+      - 'teaching'
+      - 'workshop'
+      - 'seminar'
+    weight: 0.9
+
+  testing:
+    patterns:
+      - 'test'
+      - 'scan'
+      - 'assess'
+      - 'penetrat'
+      - 'pen[\s-]?test'
+      - 'vulnerability.*scan'
+      - 'security.*test'
+      - 'security.*assessment'
+      - 'audit'
+      - 'evaluat'
+      - 'security.*audit'
+      - 'compliance.*audit'
+      - 'external.*test'
+      - 'internal.*test'
+    synonyms:
+      - 'evaluation'
+      - 'assessment'
+      - 'examination'
+      - 'validation'
+      - 'verification'
+      - 'review'
+    weight: 0.9
+
+critical_concepts:
+  - 'mfa'
+  - 'encryption'
+  - 'backup'
+  - 'access_control'
+  - 'firewall'
+
+# Reduced penalties for maximum recall
+mismatch_penalties:
+  - source: 'require.*mfa|mfa.*require'
+    target: 'test|scan|assess|penetrat'
+    penalty: 0.15  # Halved from 0.3
+  - source: 'encrypt.*transit|transit.*encrypt'
+    target: 'database|backup|storage|rest'
+    penalty: 0.2   # Halved from 0.4
+  - source: 'grant.*access|establish.*process.*grant'
+    target: 'expire|revok|terminat'
+    penalty: 0.25  # Halved from 0.5
+  - source: 'train.*authentication|authentication.*train'
+    target: 'organization.*role|general.*train'
+    penalty: 0.2   # Halved from 0.4
+  - source: 'backup|recover'
+    target: 'access.*control|authenticat'
+    penalty: 0.25  # Halved from 0.5
+  - source: 'require.*vpn|vpn.*authenticat'
+    target: 'device.*validat|anti[\s-]?malware'
+    penalty: 0.3   # Halved from 0.6
+  - source: 'implement|deploy|configure'
+    target: 'test|assess|scan|audit'
+    penalty: 0.25  # Halved from 0.5
+
+# Increased boosts for better recall
+alignment_boosts:
+  - source: 'mfa|multi[\s-]?factor'
+    target: 'token|factor|pin|authenticat|two[\s-]?factor'
+    boost: 0.3    # Increased from 0.2
+  - source: 'encrypt.*transit'
+    target: 'tls|ssl|communication|transmission|transfer'
+    boost: 0.3    # Increased from 0.2
+  - source: 'backup'
+    target: 'backup|recovery|restor|disaster|continuity'
+    boost: 0.4    # Increased from 0.3
+  - source: 'firewall'
+    target: 'firewall|filter|rule|traffic|packet'
+    boost: 0.3    # Increased from 0.2
+  - source: 'train'
+    target: 'train|educat|awareness|course|program'
+    boost: 0.3    # Increased from 0.2
+  - source: 'vulnerabil'
+    target: 'vulnerabil|scan|patch|remediat|update'
+    boost: 0.3    # Increased from 0.2
+  - source: 'access.*grant'
+    target: 'access.*provision|new.*hire|onboard|create.*account'
+    boost: 0.3    # Increased from 0.2
+  - source: 'monitor|log'
+    target: 'siem|log|monitor|detect|alert|audit'
+    boost: 0.3    # New boost
+
+# Rebalanced weights for maximum recall
+model_weights:
+  cross_encoder: 0.30      # Most reliable
+  openai: 0.20            # Strong semantic understanding
+  sentence_transformer: 0.10
+  roberta: 0.10
+  simcse: 0.05
+  entailment: 0.05        # Reduced - slow and less reliable
+  domain: 0.05
+  tfidf: 0.05
+  bm25: 0.05
+  fuzzy: 0.03
+  concept: 0.02
+
+# Algorithm parameters - increased for max recall
+penalty_alpha: 1.5         # Reduced from 2.0 for softer penalties
+concept_max_boost: 0.5     # Increased from 0.35
+candidate_base: 50         # Increased from 30
+candidate_per_concept: 15  # Increased from 10
+score_gap_target: 0.10     # Reduced from 0.15 - accept smaller gaps
+async_batch_size: 20       # Increased for faster processing
+unicode_normalize: true
+
+# FAISS parameters
+faiss_nprobe: 50          # Search more clusters
+faiss_neighbors: 100      # Get more neighbors
+
+# Additional parameters for maximum recall
+min_candidates_per_source: 100   # Ensure we always check at least 100
+use_all_embeddings: true         # Use all embedding models
+enable_concept_expansion: true   # Expand concepts with WordNet
+enable_fuzzy_concept_match: true # Match partial concept names
+max_penalty: 0.5                 # Cap maximum penalty
+min_boost: 0.1                   # Minimum boost for any alignment
