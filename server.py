@@ -49,7 +49,8 @@ except ImportError as e:
     logging.error(f"Failed to import required modules: {e}")
     logging.error("Make sure 'llm.py' and 'report.py' are in the same directory")
     sys.exit(1)
-
+import nltk
+nlkt.download("punkt_tab")
 # ── logging setup with UTF-8 encoding ────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
